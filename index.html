@@ -144,7 +144,7 @@
     .modal-select.open .modal-select-options{display:block}
     .modal-select-options button{width:100%;background:none;border:none;text-align:left;color:#fff;font-size:18px;font-family:"Montserrat",sans-serif;padding:10px 0;cursor:pointer}
     .modal-select-options button:hover{color:var(--accent)}
-    textarea.modal-field{min-height:92px;resize:vertical;padding-top:22px}
+    textarea.modal-field{min-height:140px;resize:vertical;padding-top:22px}
     .modal-submit{margin-top:32px;width:100%;border:none;background:var(--accent);color:#000;font-family:"Montserrat",sans-serif;font-size:16px;font-weight:600;line-height:1.1;border-radius:0;padding:16px 12px;cursor:pointer;transition:.2s;max-width:420px}
     .modal-submit:hover{filter:brightness(.96)}
     .modal-submit-wrap{display:flex;justify-content:center}
@@ -256,7 +256,7 @@
   <div class="case-hero warm-section">
     <div class="hero-top-actions">
       <div class="cases-menu">
-        <button class="cases-btn" id="casesToggle" aria-expanded="false" aria-controls="casesDropdown">Все кейсы</button>
+        <button class="cases-btn" id="casesToggle" aria-expanded="false" aria-controls="casesDropdown">← Все кейсы</button>
         <div class="cases-dropdown" id="casesDropdown">
           <a class="cases-item" href="#">Мультиагентная система SMM</a>
           <a class="cases-item" href="#">AI-Микросервис для колл-центра</a>
@@ -420,6 +420,7 @@
         <input type="hidden" name="budget"/>
       </div>
 
+      <textarea class="modal-field" name="task" placeholder="Опишите вашу задачу"></textarea>
       <input class="modal-field" type="text" name="contact" placeholder="Ваш контакт (@telegram_id / +7 (999) 123-45-67)"/>
       <div class="modal-submit-wrap"><button class="modal-submit" type="submit">Отправить заявку</button></div>
     </form>

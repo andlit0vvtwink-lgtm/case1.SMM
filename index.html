@@ -303,6 +303,15 @@
       
     </div>
 
+    <div class="section-heading reveal" id="architecture"><h2>Архитектура решения</h2></div>
+    <div class="architecture-system reveal" aria-label="Диаграмма мультиагентной архитектуры">
+      <div class="architecture-agents">
+        <article class="agent-node agent-node--tl"><h4>Агент-планировщик</h4><p>Формирует структуру поста, ключевые мысли и формат подачи. На выходе создаёт бриф, а не черновой текст.</p></article>
+        <article class="agent-node agent-node--bl"><h4>Агент-копирайтер</h4><p>Пишет текст строго по брифу и не отвлекается на структуру или форматирование, что даёт более чистый и точный контент.</p></article>
+        <article class="agent-node agent-node--tr"><h4>Агент-форматировщик</h4><p>Адаптирует материал под Telegram: абзацы, эмодзи и CTA. Работает только с формой, не меняя смысл сообщения.</p></article>
+        <article class="agent-node agent-node--br"><h4>Агент-редактор</h4><p>Проверяет грамотность, выравнивает стиль и контролирует tone of voice перед финальной выдачей в публикацию.</p></article>
+      </div>
+    </div>
     <div class="block-sep"></div>
 
     <div class="section-heading reveal" id="example"><h2>Как работает система</h2></div>

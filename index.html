@@ -252,15 +252,23 @@
   <div class="section-divider"></div>
 
   <article class="case-body">
-    <div class="section-heading reveal" id="problem"><h2>Какую проблему мы обнаружили</h2></div>
+    <div class="section-heading reveal" id="problem"><h2>Проблема</h2></div>
     <p class="reveal">SMM-специалист вручную проходил все этапы: придумывал тему, писал текст, искал изображения и оформлял публикацию. На один пост стабильно уходило около 50 минут.</p>
-    <p class="reveal">При 23 каналах это превращалось в конвейер, где человек работал как робот. <span class="problem-accent">Ключевой вывод:</span> корневая проблема была в архитектуре процесса — один специалист закрывал четыре принципиально разные задачи одновременно, что снижало качество каждого этапа и делало масштабирование невозможным без найма.</p>
-    <p class="reveal"><strong>Цель проекта:</strong> автоматизировать полный цикл создания контента и обеспечить единый стандарт качества без расширения штата.</p>
+    <p class="reveal">Также отсутствовала стандартизация: стиль и структура постов зависели от конкретного SMM-менеджера - кто-то делал лучше, а кто-то хуже <span class="problem-accent">Вывод:</span> корневая проблема в архитектуре процесса — один специалист закрывал четыре принципиально разные задачи одновременно, что снижало качество каждого этапа по отдельности и делало масштабирование невозможным без найма.</p>
+    <p class="reveal"><strong>Цель решения:</strong> автоматизировать полный цикл создания контента и обеспечить единый стандарт качества без расширения штата.</p>
 
     <div class="block-sep"></div>
 
     <div class="section-heading reveal" id="solution"><h2>Решение</h2></div>
-    <p class="reveal"><strong>Мы разработали веб-приложение с мультиагентной архитектурой, где каждый этап производства поста закреплён за отдельным AI-агентом.</strong></p>
+    <p class="reveal"><strong>Веб-приложение на базе Google Gemini с мультиагентной архитектурой, автоматизирующее полный цикл создания контента - от идеи до готового поста, с одновременной стандартизацией и повышением качества за счёт эталонного Tone of Voice.</strong></p>
+    <p class="reveal">Система построена как конвейер из специализированных AI-агентов, где каждый из них отвечает за отдельный этап и передаёт результат следующему.</p>
+    <div class="architecture-agents">
+        <article class="agent-node agent-node--tl"><h4>Агент-планировщик</h4><p>Формирует основу поста: принимает на вход целевую аудиторию, Tone of Voice (на основе эталонных примеров самых опытных специалистов команды), ключевые тезисы и структуру (в виде JSON-брифа)</p></article>
+        <article class="agent-node agent-node--bl"><h4>Агент-копирайтер</h4><p>Пишет текст строго по брифу и не отвлекается на структуру или форматирование, что даёт более чистый и точный контент.</p></article>
+        <article class="agent-node agent-node--tr"><h4>Агент-форматировщик</h4><p>Адаптирует материал под Telegram: абзацы, эмодзи и CTA. Работает только с формой, не меняя смысл сообщения.</p></article>
+        <article class="agent-node agent-node--br"><h4>Агент-редактор</h4><p>Проверяет грамотность, выравнивает стиль и контролирует tone of voice перед финальной выдачей в публикацию.</p></article>
+    </div>
+    <p class="reveal">Это устраняет перегрузку одного специалиста и формирует предсказуемое качество результата</p>
     <div class="solution-flow reveal">
       <div class="flow-step">
         <span class="flow-dot"></span>
@@ -287,19 +295,14 @@
 
     <div class="block-sep"></div>
 
-    <div class="section-heading reveal" id="architecture"><h2>Архитектура решения</h2></div>
+    <div class="section-heading reveal" id="architecture"><h2>Подробнее про агентов</h2></div>
     <div class="architecture-system reveal" aria-label="Диаграмма мультиагентной архитектуры">
-      <div class="architecture-agents">
-        <article class="agent-node agent-node--tl"><h4>Агент-планировщик</h4><p>Формирует структуру поста, ключевые мысли и формат подачи. На выходе создаёт бриф, а не черновой текст.</p></article>
-        <article class="agent-node agent-node--bl"><h4>Агент-копирайтер</h4><p>Пишет текст строго по брифу и не отвлекается на структуру или форматирование, что даёт более чистый и точный контент.</p></article>
-        <article class="agent-node agent-node--tr"><h4>Агент-форматировщик</h4><p>Адаптирует материал под Telegram: абзацы, эмодзи и CTA. Работает только с формой, не меняя смысл сообщения.</p></article>
-        <article class="agent-node agent-node--br"><h4>Агент-редактор</h4><p>Проверяет грамотность, выравнивает стиль и контролирует tone of voice перед финальной выдачей в публикацию.</p></article>
-      </div>
+      
     </div>
 
     <div class="block-sep"></div>
 
-    <div class="section-heading reveal" id="example"><h2>Пример использования</h2></div>
+    <div class="section-heading reveal" id="example"><h2>Как работает система</h2></div>
     <p class="reveal"><strong>Входные данные от SMM-менеджера:</strong> аудитория — предприниматели, цель — продажа услуги автоматизации, тезисы — сокращение времени, снижение затрат, рост выручки.</p>
 
     <div class="roadmap-vertical reveal" aria-label="Roadmap создания поста">
@@ -345,16 +348,16 @@
     <div class="section-heading reveal" id="results"><h2>Результаты</h2></div>
     <div class="hero-results reveal" aria-label="Ключевые результаты">
       <div class="metric-card">
-        <div class="metric-value">x20</div>
-        <div class="metric-note">Скорость подготовки поста: ~50 минут → ~2 минуты</div>
+        <div class="metric-value">x10 Скорость</div>
+        <div class="metric-note">Скорость подготовки поста: ~50 → ~5 минуты</div>
       </div>
       <div class="metric-card">
-        <div class="metric-value">−80%</div>
+        <div class="metric-value">−80% рутины</div>
         <div class="metric-note">Ручной работы за счёт автоматизации рутинных этапов и переноса роли специалиста в контроль качества</div>
       </div>
       <div class="metric-card">
-        <div class="metric-value">x2.3</div>
-        <div class="metric-note">Рост ERR благодаря единой структуре, корректному форматированию и встроенным CTA</div>
+        <div class="metric-value">x1.3 ERR</div>
+        <div class="metric-note">Рост вовлеченности благодаря единой структуре, корректному форматированию и встроенным CTA</div>
       </div>
     </div>
 

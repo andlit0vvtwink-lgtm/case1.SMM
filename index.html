@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Среда для работы с локальной LLM · Aivion</title>
-  <meta name="description" content="Кейс о том, как веб-среда для локальной LLM упростила работу копирайтеров и аналитиков: ускорила A/B тестирование промптов и сохранила приватность данных"/>
+  <title>AI-ассистент генерации ТЗ · Aivion</title>
+  <meta name="description" content="Кейс о том, как AI-ассистент генерации ТЗ ускорил подготовку дизайн-спецификаций для FinTech и SaaS: стандартизировал документацию и сократил рутину команды"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
@@ -290,7 +290,7 @@
         <div class="mobile-cases" aria-label="Список кейсов">
           <span class="mobile-cases-title">Все кейсы</span>
           <a class="cases-item" href="#">Мультиагентная система SMM</a>
-          <a class="cases-item" href="#">Среда для локальной LLM</a>
+          <a class="cases-item" href="#">AI-ассистент генерации ТЗ</a>
           <a class="cases-item" href="#">PromptLab</a>
           <a class="cases-item" href="#">Составитель ТЗ</a>
           <a class="cases-item" href="#">Корпоративная PBMS система</a>
@@ -305,42 +305,51 @@
         <button class="cases-btn" id="casesToggle" aria-expanded="false" aria-controls="casesDropdown">← Все кейсы</button>
         <div class="cases-dropdown" id="casesDropdown">
           <a class="cases-item" href="#">Мультиагентная система SMM</a>
-          <a class="cases-item" href="#">Среда для локальной LLM</a>
+          <a class="cases-item" href="#">AI-ассистент генерации ТЗ</a>
           <a class="cases-item" href="#">PromptLab</a>
           <a class="cases-item" href="#">Составитель ТЗ</a>
           <a class="cases-item" href="#">Корпоративная PBMS система</a>
         </div>
       </div>
     </div>
-    <h1 class="case-title reveal">Среда для работы <br> с <span class="hi">локальной LLM</span></h1>
-    <p class="case-lead reveal">К нам обратился R&amp;D-отдел маркетингового агентства (NDA), где AI уже использовался в копирайтинге и аналитике. Но работа с локальной моделью через терминал занимала <span class="accent-white">слишком много ручных шагов</span>, из-за чего команда теряла скорость и зависела от технических специалистов</p>
+    <h1 class="case-title reveal">AI-ассистент <br> генерации <span class="hi">дизайн-ТЗ</span></h1>
+    <p class="case-lead reveal">К нам обратилась студия продуктового дизайна (NDA), которая делает сложные интерфейсы для FinTech и SaaS. Команда регулярно получала запросы в стиле «сделайте как Apple, но для трейдинга», и перевод таких формулировок в точные спецификации занимал <span class="accent-white">слишком много ручной работы</span> и времени senior-специалистов.</p>
   </div>
 
   <div class="section-divider"></div>
 
   <article class="case-body warm-section">
     <div class="section-heading reveal" id="problem"><h2>Проблема</h2></div>
-    <p class="reveal">Сотрудники вручную запускали один и тот же промпт по 5–10 раз, чтобы проверить стабильность ответа модели. Это отнимало время и мешало быстро сравнивать варианты генерации в рамках одной гипотезы.</p>
-    <p class="reveal">Изменение температуры, seed и других параметров требовало работы через конфиги и терминал. Для копирайтеров и аналитиков такой формат был неудобен, поэтому процесс постоянно требовал вовлечения разработчиков.</p>
-    <p class="reveal"><span class="problem-accent">Вывод:</span> переход на локальные модели повысил безопасность, но усложнил ежедневную работу команды. Нужен был понятный интерфейс, который автоматизирует A/B тестирование промптов без компромиссов по приватности.</p>
+    <p class="reveal">После брифа менеджеры и дизайнеры вручную декомпозировали запрос клиента, затем собирали ТЗ в свободной форме. До 30% времени предпроектной фазы уходило на рутину: формулировки, уточнения, синхронизации и правки.</p>
+    <p class="reveal">Качество документации зависело от конкретного исполнителя: каждый писал по-своему, а описания анимаций и визуальных эффектов оставались субъективными. На стыке дизайна и разработки это вызывало разночтения и дополнительные итерации.</p>
+    <p class="reveal"><span class="problem-accent">Вывод:</span> студии нужен был инструмент, который превращает абстрактный клиентский запрос в стандартизированное, технически точное ТЗ за минуты, а не за два рабочих дня.</p>
 
     <div class="block-sep"></div>
 
     <div class="section-heading reveal" id="solution"><h2>Решение</h2></div>
     <div class="solution-intro reveal">
-      <p>Мы собрали единое веб-приложение на Flask для работы с локальной LLM через Ollama API: вместо терминала команда получила понятный интерфейс для генерации, тестирования и сравнения ответов в одном окне.</p>
-      <p>Блок «Решение» собран вокруг трёх пользовательских сценариев, которые одновременно закрывают бизнес-логику, техническую устойчивость и комфорт ежедневной работы нетехнических специалистов.</p>
+      <p>Мы разработали веб-приложение на Flask с многоагентной архитектурой на базе Google Gemini (gemma-3-27b-it), которое автоматически формирует структурированные дизайн-спецификации в JSON.</p>
+      <p>Вместо длинной ручной подготовки команда получила предсказуемый конвейер: от декомпозиции запроса до аудита готового ТЗ и итеративной доработки без потери контекста.</p>
     </div>
 
     <article class="solution-main-card reveal">
-      <h3>Три механизма, которые убрали рутину</h3>
-      <p>Каждая карточка объединяет бизнес-ценность и техническую реализацию: от пакетных прогонов до управления параметрами и воспроизводимости результатов.</p>
+      <h3>Решение объединяет логику, контроль качества и масштабирование</h3>
+      <p>Мы собрали бизнес-логику, ключевые особенности и дополнительные компоненты в три продуктовые карточки, чтобы команда работала по единому стандарту в каждом проекте.</p>
       <div class="solution-pillars">
-        <article class="pillar-card"><h4>Пакетные прогоны промптов</h4><p>Один и тот же запрос запускается до 20 раз в один , чтобы быстро проверить стабильность ответов и сравнить варианты без ручных повторов. Генерации выполняются в фоновой очереди, поэтому интерфейс остаётся отзывчивым.</p></article>
-        <article class="pillar-card"><h4>Панель параметров модели</h4><p>Temperature, Top-P, Top-K и Max Tokens управляются через визуальные контролы без редактирования конфигов. Результаты приходят в реальном времени через SSE-стриминг, что ускоряет цикл A/B тестирования.</p></article>
-        <article class="pillar-card"><h4>Гибкое управление seed</h4><p>Пользователь фиксирует seed для воспроизводимых тестов или включает случайный режим для поиска креативных вариантов. Решение разворачивается за ~30 секунд как single-file приложение и работает полностью локально, без интернета.</p></article>
+        <article class="pillar-card"><h4>Декомпозиция клиентского запроса</h4><p>Система превращает абстрактные формулировки в конкретные сущности, цели и UX-паттерны. Это убирает размытость на старте и сокращает число уточняющих циклов с заказчиком.</p></article>
+        <article class="pillar-card"><h4>Генерация стандартизированного JSON-ТЗ</h4><p>Выходной документ содержит точные параметры интерфейса, включая анимации (stiffness, damping), структуру дизайн-системы и технические ограничения. Результат сразу совместим с рабочими инструментами команды.</p></article>
+        <article class="pillar-card"><h4>Самовалидация и итеративный аудит</h4><p>Встроенный аудитор проверяет полноту спецификации, корректность JSON и соответствие требованиям. При несоответствиях запускается автоматическая доработка без ручного перезапуска процесса.</p></article>
       </div>
     </article>
+
+    <section class="architecture-system reveal" aria-label="Агентная архитектура решения">
+      <div class="architecture-agents">
+        <article class="agent-node agent-node--tl"><h4>Principal Product Analyst</h4><p>Разбирает исходный запрос клиента, формирует структуру требований, сценарии использования и UX-приоритеты для следующего слоя.</p></article>
+        <article class="agent-node agent-node--tr"><h4>Principal Product Designer</h4><p>Преобразует аналитическую структуру в детализированное JSON-ТЗ: компоненты интерфейса, состояния, анимации и правила визуальной системы.</p></article>
+        <article class="agent-node agent-node--bl"><h4>Design Auditor</h4><p>Проверяет спецификацию на полноту и качество, даёт обратную связь и инициирует повторные итерации до прохождения требований.</p></article>
+        <article class="agent-node agent-node--br"><h4>Template &amp; Style Curator</h4><p>Подключает библиотеку проверенных стилевых шаблонов (Data-First Futurism, Glassmorphism Elegance, Apple Minimalist) для быстрого создания альтернативных концепций.</p></article>
+      </div>
+    </section>
 
     <div class="block-sep"></div>
     
@@ -348,42 +357,42 @@
     <section class="how-system-layout" aria-label="Как работает система">
       <div class="roadmap-copy">
         <div class="section-heading reveal" id="example"><h2>Как работает система</h2></div>
-        <p class="reveal visible">Пользователь выбирает модель, вводит промпт и задаёт параметры теста в веб-интерфейсе. Система отправляет задания в очередь и по мере готовности возвращает результаты потоково, без зависания страницы. </p>
+        <p class="reveal visible">После получения брифа система проходит несколько этапов: анализ запроса, проектирование структуры спецификации, генерация JSON и автоматический аудит. Благодаря этому документация формируется в едином стандарте независимо от исполнителя.</p>
       </div>
 
-      <div class="roadmap-vertical reveal" aria-label="Roadmap работы с локальной LLM">
+      <div class="roadmap-vertical reveal" aria-label="Roadmap генерации дизайн-спецификации">
         <article class="roadmap-item left">
           <div class="roadmap-content">
-            <h4>Запуск серии генераций</h4>
-            <p>Пользователь задаёт количество прогонов и запускает серию одним действием, чтобы сразу получить массив ответов для сравнения.</p>
+            <h4>Сбор и декомпозиция входных данных</h4>
+            <p>Система выделяет из запроса цели продукта, ограничения, целевые сценарии и ожидания по стилю интерфейса.</p>
           </div>
           <span class="roadmap-marker"></span>
         </article>
         <article class="roadmap-item right">
           <span class="roadmap-marker"></span>
           <div class="roadmap-content">
-            <h4>Настройка параметров модели</h4>
-            <p>Параметры Temperature, Top-P, Top-K и Max Tokens регулируются в панели и применяются к каждой генерации в серии.</p>
+            <h4>Генерация базовой структуры ТЗ</h4>
+            <p>Агент-аналитик передаёт структурированный контекст дизайнерскому агенту, который формирует каркас спецификации для интерфейса.</p>
           </div>
         </article>
         <article class="roadmap-item left">
           <div class="roadmap-content">
-            <h4>Управление seed-сценарием</h4>
-            <p>Для воспроизводимости фиксируется seed, а для вариативности включается случайный seed — оба режима доступны в одном месте.</p>
+            <h4>Детализация UI и анимаций</h4>
+            <p>Спецификация дополняется компонентами дизайн-системы, состояниями и параметрами motion-дизайна с точными техническими значениями.</p>
           </div>
           <span class="roadmap-marker"></span>
         </article>
         <article class="roadmap-item right">
           <span class="roadmap-marker"></span>
           <div class="roadmap-content">
-            <h4>Потоковая выдача результатов</h4>
-            <p>Ответы появляются по мере готовности через SSE, поэтому команда видит промежуточные результаты без ожидания завершения всей серии.</p>
+            <h4>Автоматическая проверка и правки</h4>
+            <p>Design Auditor оценивает полноту, валидность JSON и соответствие требованиям; при необходимости запускает повторные итерации.</p>
           </div>
         </article>
         <article class="roadmap-item left">
           <div class="roadmap-content">
-            <h4>Локальное развёртывание</h4>
-            <p>Приложение поставляется одним Python-файлом и поднимается в локальной сети без внешних сервисов, сохраняя приватность данных клиентов.</p>
+            <h4>Экспорт и интеграция в процесс</h4>
+            <p>Готовый JSON передаётся в рабочие инструменты команды, а также используется для быстрого сравнения альтернативных концепций в разных стилях.</p>
           </div>
           <span class="roadmap-marker"></span>
         </article>
@@ -395,16 +404,16 @@
     <div class="section-heading reveal" id="results"><h2>Результаты</h2></div>
     <div class="hero-results reveal" aria-label="Ключевые результаты">
       <div class="metric-card">
-        <div class="metric-value">x10 быстрее</div>
-        <div class="metric-note">Проверка одной гипотезы сократилась с ~5 минут до ~30 секунд</div>
+        <div class="metric-value">2 дня → 2 минуты</div>
+        <div class="metric-note">Подготовка технического задания сократилась с ~2 рабочих дней до ~2 минут</div>
       </div>
       <div class="metric-card">
-        <div class="metric-value">-90% Кликов </div>
-        <div class="metric-note">Ручные прогоны заменены пакетным тестированием промптов в одном запуске</div>
+        <div class="metric-value">30% → 10%</div>
+        <div class="metric-note">Доля времени на рутинные задачи снизилась с 30% проекта до 10%</div>
       </div>
       <div class="metric-card">
-        <div class="metric-value">Приватность</div>
-        <div class="metric-note">Все данные остаются в контуре компании без передачи во внешние облачные сервисы</div>
+        <div class="metric-value">Единый стандарт</div>
+        <div class="metric-note">Качество документации перестало зависеть от конкретного менеджера или дизайнера</div>
       </div>
     </div>
 
@@ -415,19 +424,19 @@
       <div class="tech-track" id="techTrack">
         <span class="tech-chip">Python</span>
         <span class="tech-chip">Flask</span>
-        <span class="tech-chip">Ollama API</span>
-        <span class="tech-chip">Server-Sent Events (SSE)</span>
-        <span class="tech-chip">Threading</span>
-        <span class="tech-chip">Single-File Architecture</span>
-        <span class="tech-chip">Backdrop-filter UI</span>
-        <span class="tech-chip">Skeleton Loading</span>
+        <span class="tech-chip">Google Generative AI SDK</span>
+        <span class="tech-chip">Gemini (gemma-3-27b-it)</span>
+        <span class="tech-chip">Multi-Agent Orchestration</span>
+        <span class="tech-chip">JSON Schema Validation</span>
+        <span class="tech-chip">Retry &amp; Feedback Loop</span>
+        <span class="tech-chip">Prompt Template Library</span>
       </div>
     </div>
 
     <div class="cta-wrap reveal" id="cta">
-      <h3>Обсудим внедрение ИИ в ваши процессы</h3>
-      <p>Покажем, как запустить локальные AI-инструменты для команды, ускорить проверку гипотез и сохранить приватность клиентских данных.</p>
-      <a href="#" class="cta-btn" id="openBriefBtn">Запросить AI-аудит</a>
+      <h3>Обсудим ваш документооборот и подготовку ТЗ</h3>
+      <p>Покажем, как автоматизировать подготовку спецификаций, стандартизировать качество документов и ускорить запуск новых проектов без расширения штата.</p>
+      <a href="#" class="cta-btn" id="openBriefBtn">Запросить аудит документации</a>
     </div>
   </article>
 

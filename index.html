@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AI-микросервис для колл-центров · Aivion</title>
-  <meta name="description" content="Кейс о том, как AI-микросервис автоматизировал обработку звонков в e-commerce: сократил время с 2 минут до 30 секунд и повысил точность данных"/>
+  <title>Среда для работы с локальной LLM · Aivion</title>
+  <meta name="description" content="Кейс о том, как веб-среда для локальной LLM упростила работу копирайтеров и аналитиков: ускорила A/B тестирование промптов и сохранила приватность данных"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
@@ -290,7 +290,7 @@
         <div class="mobile-cases" aria-label="Список кейсов">
           <span class="mobile-cases-title">Все кейсы</span>
           <a class="cases-item" href="#">Мультиагентная система SMM</a>
-          <a class="cases-item" href="#">AI-Микросервис для колл-центра</a>
+          <a class="cases-item" href="#">Среда для локальной LLM</a>
           <a class="cases-item" href="#">PromptLab</a>
           <a class="cases-item" href="#">Составитель ТЗ</a>
           <a class="cases-item" href="#">Корпоративная PBMS система</a>
@@ -305,53 +305,42 @@
         <button class="cases-btn" id="casesToggle" aria-expanded="false" aria-controls="casesDropdown">← Все кейсы</button>
         <div class="cases-dropdown" id="casesDropdown">
           <a class="cases-item" href="#">Мультиагентная система SMM</a>
-          <a class="cases-item" href="#">AI-Микросервис для колл-центра</a>
+          <a class="cases-item" href="#">Среда для локальной LLM</a>
           <a class="cases-item" href="#">PromptLab</a>
           <a class="cases-item" href="#">Составитель ТЗ</a>
           <a class="cases-item" href="#">Корпоративная PBMS система</a>
         </div>
       </div>
     </div>
-    <h1 class="case-title reveal">AI-микросервис <br> для <span class="hi">колл-центров</span></h1>
-    <p class="case-lead reveal">К нам обратился сервис доставки и логистики (E-commerce, NDA), который ежедневно обрабатывает тысячи входящих заказов по телефону. Обработка одного заказа занимала <span class="accent-white">около 2 минут</span>, а рост нагрузки на оператора увеличивал риск ошибок в адресах и деталях доставки</p>
+    <h1 class="case-title reveal">Среда работы <br> с <span class="hi">локальной LLM</span></h1>
+    <p class="case-lead reveal">К нам обратился R&amp;D-отдел маркетингового агентства (NDA), где AI уже использовался в копирайтинге и аналитике. Но работа с локальной моделью через терминал занимала <span class="accent-white">слишком много ручных шагов</span>, из-за чего команда теряла скорость и зависела от технических специалистов</p>
   </div>
 
   <div class="section-divider"></div>
 
   <article class="case-body warm-section">
     <div class="section-heading reveal" id="problem"><h2>Проблема</h2></div>
-    <p class="reveal">Оператор одновременно вёл разговор с клиентом и вручную вносил данные в CRM: адрес, состав заказа, комментарии по доставке и контактные детали. При потоке звонков это регулярно приводило к неточностям и потерям в качестве сервиса.</p>
-    <p class="reveal">Ошибки в адресах и деталях заказа напрямую влияли на SLA доставки, повторные контакты и клиентский опыт. Дополнительно не было прозрачного контроля качества звонков: компания видела итог в CRM, но не видела, где именно и почему возникали отклонения.</p>
-    <p class="reveal"><span class="problem-accent">Вывод:</span> ключевая проблема была в ручной обработке звонков и отсутствии стандартизированного контура контроля. Бизнесу требовалась автоматизация, которая снимает человеческий фактор с ввода данных и даёт управляемую аналитику по процессу.</p>
+    <p class="reveal">Сотрудники вручную запускали один и тот же промпт по 5–10 раз, чтобы проверить стабильность ответа модели. Это отнимало время и мешало быстро сравнивать варианты генерации в рамках одной гипотезы.</p>
+    <p class="reveal">Изменение температуры, seed и других параметров требовало работы через конфиги и терминал. Для копирайтеров и аналитиков такой формат был неудобен, поэтому процесс постоянно требовал вовлечения разработчиков.</p>
+    <p class="reveal"><span class="problem-accent">Вывод:</span> переход на локальные модели повысил безопасность, но усложнил ежедневную работу команды. Нужен был понятный интерфейс, который автоматизирует A/B тестирование промптов без компромиссов по приватности.</p>
 
     <div class="block-sep"></div>
 
     <div class="section-heading reveal" id="solution"><h2>Решение</h2></div>
     <div class="solution-intro reveal">
-      <p>Мы разработали AI-микросервис на FastAPI, который интегрируется с CRM и работает в фоновом режиме: автоматически забирает записи звонков, извлекает данные и возвращает структурированный JSON в нужные поля заказа.</p>
-      <p>Архитектура построена асинхронно: API быстро принимает задачи, воркеры обрабатывают их параллельно, а бизнес получает предсказуемое время обработки, прозрачный контроль расходов и устойчивость к внешним сбоям AI-провайдера.</p>
+      <p>Мы собрали единое веб-приложение на Flask для работы с локальной LLM через Ollama API: вместо терминала команда получила понятный интерфейс для генерации, тестирования и сравнения ответов в одном окне.</p>
+      <p>Блок «Решение» собран вокруг трёх пользовательских сценариев, которые одновременно закрывают бизнес-логику, техническую устойчивость и комфорт ежедневной работы нетехнических специалистов.</p>
     </div>
 
     <article class="solution-main-card reveal">
-      <h3>Двухрежимная обработка данных</h3>
-      <p>Сервис поддерживает два режима под разные бизнес-задачи: быстрый операционный ввод в CRM и расширенный контроль качества диалогов.</p>
-      <div class="mode-grid">
-        <article class="mode-card">
-          <h4>Address Only</h4>
-          <p>Извлечение только критически важных данных: адрес, детали заказа и комментарии к доставке. Структура валидируется через Pydantic, чтобы в CRM уходили только корректные, унифицированные поля.</p>
-        </article>
-        <article class="mode-card">
-          <h4>Full Transcript</h4>
-          <p>Полная расшифровка разговора с разделением ролей «Клиент/Оператор» и таймкодами. Используется для QA, обучения операторов и разбора спорных кейсов по доставке.</p>
-        </article>
+      <h3>Три механизма, которые убрали рутину</h3>
+      <p>Каждая карточка объединяет бизнес-ценность и техническую реализацию: от пакетных прогонов до управления параметрами и воспроизводимости результатов.</p>
+      <div class="solution-pillars">
+        <article class="pillar-card"><h4>Пакетные прогоны промптов</h4><p>Один и тот же запрос запускается до 20 раз в один клик, чтобы быстро проверить стабильность ответов и сравнить варианты без ручных повторов. Генерации выполняются в фоновой очереди, поэтому интерфейс остаётся отзывчивым.</p></article>
+        <article class="pillar-card"><h4>Панель параметров модели</h4><p>Temperature, Top-P, Top-K и Max Tokens управляются через визуальные контролы без редактирования конфигов. Результаты приходят в реальном времени через SSE-стриминг, что ускоряет цикл A/B тестирования.</p></article>
+        <article class="pillar-card"><h4>Гибкое управление seed</h4><p>Пользователь фиксирует seed для воспроизводимых тестов или включает случайный режим для поиска креативных вариантов. Решение разворачивается за ~30 секунд как single-file приложение и работает полностью локально, без интернета.</p></article>
       </div>
     </article>
-
-    <div class="solution-pillars reveal">
-      <article class="pillar-card"><h4>Очередь и масштабируемость</h4><p>Задачи попадают в асинхронную очередь и обрабатываются пулом воркеров. При росте нагрузки система масштабируется горизонтально без деградации скорости.</p></article>
-      <article class="pillar-card"><h4>Финансовая логика и отказоустойчивость</h4><p>Сервис считает стоимость обработки по длительности аудио и токенам, применяет retry-политику с экспоненциальной задержкой и корректно восстанавливается после временных ошибок провайдера.</p></article>
-      <article class="pillar-card"><h4>Мониторинг через Telegram</h4><p>Telegram-бот показывает статус задач, метрики обработки и отчёты в PNG. Администраторы управляют ключами и балансом без прямого доступа к серверной панели.</p></article>
-    </div>
 
     <div class="block-sep"></div>
     
@@ -359,42 +348,42 @@
     <section class="how-system-layout" aria-label="Как работает система">
       <div class="roadmap-copy">
         <div class="section-heading reveal" id="example"><h2>Как работает система</h2></div>
-        <p class="reveal visible">После завершения разговора CRM или телефония передаёт ссылку на запись звонка и параметры заказа. Система ставит задачу в очередь, возвращает статус и запускает фоновую обработку без участия оператора. </p>
+        <p class="reveal visible">Пользователь выбирает модель, вводит промпт и задаёт параметры теста в веб-интерфейсе. Система отправляет задания в очередь и по мере готовности возвращает результаты потоково, без зависания страницы. </p>
       </div>
 
       <div class="roadmap-vertical reveal" aria-label="Roadmap обработки звонка">
         <article class="roadmap-item left">
           <div class="roadmap-content">
-            <h4>Приём и маршрутизация</h4>
-            <p>API принимает запрос, проверяет параметры и маршрутизирует звонок в нужный режим: Address Only или Full Transcript.</p>
+            <h4>Запуск серии генераций</h4>
+            <p>Пользователь задаёт количество прогонов и запускает серию одним действием, чтобы сразу получить массив ответов для сравнения.</p>
           </div>
           <span class="roadmap-marker"></span>
         </article>
         <article class="roadmap-item right">
           <span class="roadmap-marker"></span>
           <div class="roadmap-content">
-            <h4>Извлечение и валидация данных</h4>
-            <p>AI-модель извлекает адрес, детали заказа и дополнительные атрибуты, после чего данные проходят проверку схемы через Pydantic.</p>
+            <h4>Настройка параметров модели</h4>
+            <p>Параметры Temperature, Top-P, Top-K и Max Tokens регулируются в панели и применяются к каждой генерации в серии.</p>
           </div>
         </article>
         <article class="roadmap-item left">
           <div class="roadmap-content">
-            <h4>Запись результата в CRM</h4>
-            <p>Валидированный JSON автоматически записывается в карточку заказа, а оператор получает уже заполненные и стандартизированные поля.</p>
+            <h4>Управление seed-сценарием</h4>
+            <p>Для воспроизводимости фиксируется seed, а для вариативности включается случайный seed — оба режима доступны в одном месте.</p>
           </div>
           <span class="roadmap-marker"></span>
         </article>
         <article class="roadmap-item right">
           <span class="roadmap-marker"></span>
           <div class="roadmap-content">
-            <h4>Контроль качества</h4>
-            <p>При необходимости создаётся полная транскрипция с ролями и таймкодами для проверки качества звонка и последующего обучения команды.</p>
+            <h4>Потоковая выдача результатов</h4>
+            <p>Ответы появляются по мере готовности через SSE, поэтому команда видит промежуточные результаты без ожидания завершения всей серии.</p>
           </div>
         </article>
         <article class="roadmap-item left">
           <div class="roadmap-content">
-            <h4>Мониторинг и отчётность</h4>
-            <p>Telegram-бот и дашборд показывают статус обработки, затраты и ключевые метрики, позволяя оперативно управлять производительностью сервиса.</p>
+            <h4>Локальное развёртывание</h4>
+            <p>Приложение поставляется одним Python-файлом и поднимается в локальной сети без внешних сервисов, сохраняя приватность данных клиентов.</p>
           </div>
           <span class="roadmap-marker"></span>
         </article>
@@ -406,16 +395,16 @@
     <div class="section-heading reveal" id="results"><h2>Результаты</h2></div>
     <div class="hero-results reveal" aria-label="Ключевые результаты">
       <div class="metric-card">
-        <div class="metric-value">x4 Скорость</div>
-        <div class="metric-note">Обработка заказа сократилась с ~2 минут до ~30 секунд</div>
+        <div class="metric-value">x10 быстрее</div>
+        <div class="metric-note">Проверка одной гипотезы сократилась с ~5 минут до ~30 секунд</div>
       </div>
       <div class="metric-card">
-        <div class="metric-value">−70% ошибок</div>
-        <div class="metric-note">Снижен процент ошибок в адресах и деталях благодаря JSON-валидации</div>
+        <div class="metric-value">1 клик вместо 10</div>
+        <div class="metric-note">Ручные прогоны заменены пакетным тестированием промптов в одном запуске</div>
       </div>
       <div class="metric-card">
-        <div class="metric-value">2 сотрудника</div>
-        <div class="metric-note">Были замечены системой и оштрафованы за грубое общение с клиентами</div>
+        <div class="metric-value">100% локально</div>
+        <div class="metric-note">Все данные остаются в контуре компании без передачи во внешние облачные сервисы</div>
       </div>
     </div>
 
@@ -425,20 +414,20 @@
     <div class="tech-slider reveal" aria-label="Слайдер стека">
       <div class="tech-track" id="techTrack">
         <span class="tech-chip">Python</span>
-        <span class="tech-chip">Google Generative AI</span>
-        <span class="tech-chip">Asyncio</span>
-        <span class="tech-chip">FastAPI</span>
-        <span class="tech-chip">Pydantic</span>
-        <span class="tech-chip">Telegram Bot API</span>
-        <span class="tech-chip">Docker</span>
-        <span class="tech-chip">S3</span>
+        <span class="tech-chip">Flask</span>
+        <span class="tech-chip">Ollama API</span>
+        <span class="tech-chip">Server-Sent Events (SSE)</span>
+        <span class="tech-chip">Threading</span>
+        <span class="tech-chip">Single-File Architecture</span>
+        <span class="tech-chip">Backdrop-filter UI</span>
+        <span class="tech-chip">Skeleton Loading</span>
       </div>
     </div>
 
     <div class="cta-wrap reveal" id="cta">
-      <h3>Обсудим автоматизацию вашего колл-центра</h3>
-      <p>Покажем, как автоматизировать обработку звонков, снизить ошибки в заказах и внедрить прозрачный контроль качества без перегрузки операторов.</p>
-      <a href="#" class="cta-btn" id="openBriefBtn">Запросить аудит процесса</a>
+      <h3>Обсудим внедрение ИИ в ваши процессы</h3>
+      <p>Покажем, как запустить локальные AI-инструменты для команды, ускорить проверку гипотез и сохранить приватность клиентских данных.</p>
+      <a href="#" class="cta-btn" id="openBriefBtn">Запросить AI-аудит</a>
     </div>
   </article>
 

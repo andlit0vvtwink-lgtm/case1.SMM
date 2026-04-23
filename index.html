@@ -83,7 +83,7 @@
 
     .hero-results{margin-top:22px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
     .metric-card{padding:22px 20px;min-height:auto;background:rgba(44,44,44,.7);border:1px solid rgba(255,255,255,.16);border-radius:14px}
-    .metric-value{font-size:clamp(34px,3vw,44px);font-weight:800;line-height:1;color:var(--accent);margin-bottom:8px}
+    .metric-value{font-size:clamp(34px,3vw,36px);font-weight:800;line-height:1;color:var(--accent);margin-bottom:8px}
     .metric-note{font-size:14px;color:var(--text);line-height:1.55}
 
     .section-divider{display:block;max-width:var(--content-w);margin:0 auto 24px;border-top:1px solid var(--section-line);padding:0 clamp(20px,5vw,60px)}
@@ -311,23 +311,9 @@
 
     <div class="block-sep"></div>
 
-    <div class="section-heading reveal" id="architecture"><h2>Подробнее про агентов</h2></div>
-    <div class="architecture-system reveal" aria-label="Диаграмма мультиагентной архитектуры">
-      
-    </div>
-
     
     <div class="block-sep"></div>
     
-    <div class="section-heading reveal" id="architecture"><h2>Архитектура решения</h2></div>
-    <div class="architecture-system reveal" aria-label="Диаграмма мультиагентной архитектуры">
-      <div class="architecture-agents">
-        <article class="agent-node agent-node--tl"><h4>Агент-планировщик</h4><p>Формирует структуру поста, ключевые мысли и формат подачи. На выходе создаёт бриф, а не черновой текст.</p></article>
-        <article class="agent-node agent-node--bl"><h4>Агент-копирайтер</h4><p>Пишет текст строго по брифу и не отвлекается на структуру или форматирование, что даёт более чистый и точный контент.</p></article>
-        <article class="agent-node agent-node--tr"><h4>Агент-форматировщик</h4><p>Адаптирует материал под Telegram: абзацы, эмодзи и CTA. Работает только с формой, не меняя смысл сообщения.</p></article>
-        <article class="agent-node agent-node--br"><h4>Агент-редактор</h4><p>Проверяет грамотность, выравнивает стиль и контролирует tone of voice перед финальной выдачей в публикацию.</p></article>
-      </div>
-    </div>
     
     <div class="section-heading reveal" id="example"><h2>Как работает система</h2></div>
     <p class="reveal"><strong>Входные данные от SMM-менеджера:</strong> аудитория — предприниматели, цель — продажа услуги автоматизации, тезисы — сокращение времени, снижение затрат, рост выручки.</p>
@@ -376,15 +362,15 @@
     <div class="hero-results reveal" aria-label="Ключевые результаты">
       <div class="metric-card">
         <div class="metric-value">x10 Скорость</div>
-        <div class="metric-note">Скорость подготовки поста: ~50 → ~5 минуты</div>
+        <div class="metric-note">Написание поста теперь занимает 5 минут вместо 50</div>
       </div>
       <div class="metric-card">
         <div class="metric-value">−80% рутины</div>
-        <div class="metric-note">Ручной работы за счёт автоматизации рутинных этапов и переноса роли специалиста в контроль качества</div>
+        <div class="metric-note">Перенесли роль специалиста в контроль качества</div>
       </div>
       <div class="metric-card">
         <div class="metric-value">x1.3 ERR</div>
-        <div class="metric-note">Рост вовлеченности благодаря единой структуре, корректному форматированию и встроенным CTA</div>
+        <div class="metric-note">Рост вовлеченности благодаря повышению качества</div>
       </div>
     </div>
 

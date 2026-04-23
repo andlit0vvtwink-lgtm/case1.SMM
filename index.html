@@ -49,13 +49,13 @@
     .header-logo{font-family:"Montserrat",sans-serif;font-weight:800;font-size:18px;color:var(--text);text-decoration:none;flex-shrink:0}
     .header-logo span{color:var(--accent)}
 
-    .header-nav{display:flex;align-items:center;gap:8px}
+    .header-nav{display:flex;align-items:center;justify-content:flex-end;gap:8px;margin-left:auto}
     .nav-link{padding:8px 11px;border-radius:999px;border:1px solid transparent;text-decoration:none;color:var(--text);font-size:12px;font-family:"Montserrat",sans-serif;letter-spacing:.06em;text-transform:uppercase;transition:.2s}
     .nav-link:hover{border-color:var(--stroke-accent);color:var(--accent)}
     .cases-menu{position:relative}
-    .cases-btn{padding:9px 14px;border:1px solid var(--accent);border-radius:4px;background:var(--accent);color:#000;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;transition:.2s;cursor:pointer;font-family:"Montserrat",sans-serif}
-    .cases-btn:hover{transform:translateY(-1px);box-shadow:0 0 18px rgba(var(--accent-rgb),.35)}
-    .cases-dropdown{position:absolute;top:calc(100% + 10px);right:0;display:flex;flex-direction:column;gap:6px;min-width:280px;padding:10px;border-radius:14px;border:1px solid rgba(255,255,255,.2);background:rgba(24,24,24,.82);backdrop-filter:blur(20px) saturate(130%);-webkit-backdrop-filter:blur(20px) saturate(130%);box-shadow:0 20px 40px rgba(0,0,0,.45),inset 0 1px rgba(255,255,255,.24);opacity:0;transform:translateY(-8px);pointer-events:none;transition:opacity .22s ease,transform .22s ease}
+    .cases-btn{padding:9px 14px;border:1px solid rgba(255,255,255,.2);border-radius:4px;background:transparent;color:#A5A5A5;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;transition:.2s;cursor:pointer;font-family:"Montserrat",sans-serif}
+    .cases-btn:hover{transform:translateY(-1px);color:#D0D0D0;background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.35)}
+    .cases-dropdown{position:absolute;top:calc(100% + 10px);left:0;display:flex;flex-direction:column;gap:6px;min-width:280px;padding:10px;border-radius:14px;border:1px solid rgba(255,255,255,.2);background:rgba(24,24,24,.82);backdrop-filter:blur(20px) saturate(130%);-webkit-backdrop-filter:blur(20px) saturate(130%);box-shadow:0 20px 40px rgba(0,0,0,.45),inset 0 1px rgba(255,255,255,.24);opacity:0;transform:translateY(-8px);pointer-events:none;transition:opacity .22s ease,transform .22s ease}
     .cases-dropdown.open{opacity:1;transform:translateY(0);pointer-events:auto}
     .cases-item{display:block;padding:9px 11px;border:1px solid transparent;border-radius:10px;text-decoration:none;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:#fff;line-height:1.4}
     .cases-item:hover{border-color:rgba(var(--accent-rgb),.35);background:rgba(255,255,255,.05);color:var(--accent)}
@@ -67,6 +67,7 @@
     .mobile-cases-title{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.58);padding:6px 10px}
 
     .case-hero{position:relative;z-index:10;padding:190px clamp(20px,5vw,60px) 56px;max-width:var(--content-w);margin:0 auto}
+    .hero-top-actions{margin-bottom:20px;display:flex;justify-content:flex-start}
     .case-title{font-size:clamp(36px,5.2vw,72px);font-weight:800;letter-spacing:-.04em;line-height:1.05;margin-bottom:26px}
     .case-title .hi{color:var(--accent)}
     .case-lead{font-size:clamp(18px,1.8vw,22px);color:var(--text);line-height:1.9;max-width:780px;padding-left:20px;border-left:2px solid var(--accent-soft)}
@@ -115,8 +116,10 @@
     .agent-node h4{font-size:16px;color:var(--accent);margin-bottom:4px}
     .agent-node p{font-size:13px;line-height:1.6;color:var(--text);margin:0}
     .agent-node--tl,.agent-node--bl,.agent-node--tr,.agent-node--br{top:auto;left:auto;right:auto}
-    .tech-row{display:flex;flex-wrap:wrap;gap:12px 22px}
-    .tech-chip{padding:0;border:none;background:none;font-size:14px;line-height:1.7;color:var(--text)}
+    .tech-slider{position:relative;overflow:hidden;padding:10px 0;mask-image:linear-gradient(to right,transparent 0%,rgba(0,0,0,.2) 12%,#000 50%,rgba(0,0,0,.2) 88%,transparent 100%);-webkit-mask-image:linear-gradient(to right,transparent 0%,rgba(0,0,0,.2) 12%,#000 50%,rgba(0,0,0,.2) 88%,transparent 100%)}
+    .tech-track{display:flex;align-items:center;gap:28px;min-width:max-content;animation:techFlow 22s linear infinite;will-change:transform}
+    @keyframes techFlow{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .tech-chip{padding:0;border:none;background:none;font-size:15px;line-height:1.7;color:var(--text);white-space:nowrap;opacity:.35;transition:opacity .25s linear}
 
     .cta-wrap{margin-top:86px;border:1px solid rgba(255,255,255,.16);border-radius:var(--radius);padding:44px 24px;text-align:center;background:rgba(18,18,18,.95)}
     .cta-wrap h3{font-size:clamp(26px,3vw,36px);line-height:1.15;margin-bottom:10px}
@@ -126,15 +129,25 @@
 
     .modal-overlay{position:fixed;inset:0;z-index:240;display:grid;place-items:center;padding:20px;background:rgba(0,0,0,.7);backdrop-filter:blur(6px);opacity:0;pointer-events:none;transition:opacity .25s ease}
     .modal-overlay.open{opacity:1;pointer-events:auto}
-    .modal-card{width:min(100%,500px);max-height:calc(100vh - 40px);overflow:auto;border:1px solid rgba(255,255,255,.14);border-radius:16px;background:#060606;box-shadow:0 28px 60px rgba(0,0,0,.45);padding:34px 34px 30px}
+    .modal-card{width:min(100%,500px);max-height:calc(100vh - 40px);overflow:auto;border:1px solid rgba(255,255,255,.14);border-radius:16px;background:#060606;box-shadow:0 28px 60px rgba(0,0,0,.45);padding:28px 28px 24px}
     .modal-close{margin-left:auto;display:grid;place-items:center;width:34px;height:34px;border:none;background:transparent;color:rgba(255,255,255,.62);font-size:34px;line-height:1;cursor:pointer}
-    .modal-title{font-size:42px;font-weight:700;line-height:1.1;letter-spacing:-.03em;margin-top:8px}
-    .modal-field{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,.16);color:var(--text);font-family:"Montserrat",sans-serif;font-size:18px;padding:20px 2px 14px;outline:none}
+    .modal-title{font-size:46px;font-weight:700;line-height:1.1;letter-spacing:-.03em;margin-top:8px;margin-bottom:10px}
+    .modal-field{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,.16);color:var(--text);font-family:"Montserrat",sans-serif;font-size:34px;padding:18px 2px 14px;outline:none}
     .modal-field::placeholder{color:rgba(255,255,255,.35)}
     .modal-field:focus{border-bottom-color:rgba(var(--accent-rgb),.55)}
-    textarea.modal-field{min-height:118px;resize:vertical;padding-top:26px}
-    .modal-submit{margin-top:32px;width:100%;border:none;background:var(--accent);color:#000;font-family:"Montserrat",sans-serif;font-size:32px;font-weight:500;line-height:1.1;border-radius:0;padding:26px 12px 28px;cursor:pointer;transition:.2s}
+    .modal-select{position:relative;border-bottom:1px solid rgba(255,255,255,.16)}
+    .modal-select-btn{width:100%;border:none;background:transparent;color:rgba(255,255,255,.35);font-family:"Montserrat",sans-serif;font-size:34px;line-height:1.2;text-align:left;padding:18px 2px 14px;display:flex;justify-content:space-between;align-items:center;cursor:pointer}
+    .modal-select-btn.active{color:var(--text)}
+    .modal-select-btn::after{content:"⌄";font-size:24px;color:rgba(255,255,255,.55);margin-left:12px;transform:translateY(-2px)}
+    .modal-select.open .modal-select-btn::after{transform:rotate(180deg) translateY(2px)}
+    .modal-select-options{display:none;list-style:none;margin:8px 0 10px;padding:14px 16px;border:1px solid rgba(255,255,255,.16);background:#1a1a1a}
+    .modal-select.open .modal-select-options{display:block}
+    .modal-select-options button{width:100%;background:none;border:none;text-align:left;color:#fff;font-size:30px;font-family:"Montserrat",sans-serif;padding:10px 0;cursor:pointer}
+    .modal-select-options button:hover{color:var(--accent)}
+    textarea.modal-field{min-height:92px;resize:vertical;padding-top:22px}
+    .modal-submit{margin-top:22px;width:100%;border:none;background:var(--accent);color:#000;font-family:"Montserrat",sans-serif;font-size:16px;font-weight:600;line-height:1.1;border-radius:0;padding:16px 12px;cursor:pointer;transition:.2s;max-width:420px}
     .modal-submit:hover{filter:brightness(.96)}
+    .modal-submit-wrap{display:flex;justify-content:center}
 
     .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1)}
     .reveal.visible{opacity:1;transform:translateY(0)}
@@ -147,9 +160,10 @@
       .bg-orb--gold,.bg-orb--amber,.bg-orb--sun{opacity:.25}
       .hero-results{grid-template-columns:1fr}
       .header-nav{display:none}
-      .cases-menu{display:none}
+      header .cases-menu{display:none}
       .nav-toggle{display:grid;place-items:center}
       .case-hero{padding-top:145px}
+      .hero-top-actions .cases-menu{display:inline-block}
       .roadmap-vertical{gap:22px}
       .roadmap-vertical::before{left:18px;transform:none}
       .roadmap-vertical::after{left:18px;transform:translate(-50%,0)}
@@ -166,8 +180,10 @@
     @media (max-width:640px){
       .modal-card{padding:24px 18px 20px}
       .modal-title{font-size:32px}
-      .modal-field{font-size:17px}
-      .modal-submit{font-size:24px;padding:20px 10px}
+      .modal-field{font-size:26px}
+      .modal-select-btn{font-size:26px}
+      .modal-select-options button{font-size:22px}
+      .modal-submit{font-size:15px;padding:14px 10px}
       .architecture-system{min-height:auto}
       .architecture-road{display:none}
       .architecture-agents{position:relative;display:grid;grid-template-columns:1fr;gap:14px}
@@ -218,16 +234,6 @@
         <a class="nav-link" href="#stack">Стек</a>
       </nav>
 
-      <div class="cases-menu">
-        <button class="cases-btn" id="casesToggle" aria-expanded="false" aria-controls="casesDropdown">Все кейсы</button>
-        <div class="cases-dropdown" id="casesDropdown">
-          <a class="cases-item" href="#">Мультиагентная система SMM</a>
-          <a class="cases-item" href="#">AI-Микросервис для колл-центра</a>
-          <a class="cases-item" href="#">PromptLab</a>
-          <a class="cases-item" href="#">Составитель ТЗ</a>
-          <a class="cases-item" href="#">Корпоративная PBMS система</a>
-        </div>
-      </div>
 
       <button class="nav-toggle" id="mobileNavToggle" aria-label="Открыть меню">☰</button>
       <nav class="mobile-nav" id="mobileNav" aria-label="Мобильная навигация">
@@ -248,6 +254,18 @@
   </header>
 
   <div class="case-hero warm-section">
+    <div class="hero-top-actions">
+      <div class="cases-menu">
+        <button class="cases-btn" id="casesToggle" aria-expanded="false" aria-controls="casesDropdown">Все кейсы</button>
+        <div class="cases-dropdown" id="casesDropdown">
+          <a class="cases-item" href="#">Мультиагентная система SMM</a>
+          <a class="cases-item" href="#">AI-Микросервис для колл-центра</a>
+          <a class="cases-item" href="#">PromptLab</a>
+          <a class="cases-item" href="#">Составитель ТЗ</a>
+          <a class="cases-item" href="#">Корпоративная PBMS система</a>
+        </div>
+      </div>
+    </div>
     <h1 class="case-title reveal">Мультиагентная система <br> для <span class="hi">SMM</span></h1>
     <p class="case-lead reveal">К нам обратилось маркетинговое агентство (NDA), управляющее 23 Telegram-каналами разных тематик. Подготовка одного поста занимала около часа, ограничивала масштабирование и снижала качество контента при росте нагрузки на команду.</p>
   </div>
@@ -367,13 +385,17 @@
     <div class="block-sep"></div>
 
     <div class="section-heading reveal" id="stack"><h2>Стек технологий</h2></div>
-    <div class="tech-row reveal">
-      <span class="tech-chip">Python</span>
-      <span class="tech-chip">LangChain</span>
-      <span class="tech-chip">OpenAI API</span>
-      <span class="tech-chip">FastAPI</span>
-      <span class="tech-chip">PostgreSQL</span>
-      <span class="tech-chip">Telegram Bot API</span>
+    <div class="tech-slider reveal" aria-label="Слайдер стека">
+      <div class="tech-track" id="techTrack">
+        <span class="tech-chip">Python</span>
+        <span class="tech-chip">LangChain</span>
+        <span class="tech-chip">OpenAI API</span>
+        <span class="tech-chip">FastAPI</span>
+        <span class="tech-chip">PostgreSQL</span>
+        <span class="tech-chip">Telegram Bot API</span>
+        <span class="tech-chip">n8n</span>
+        <span class="tech-chip">Redis</span>
+      </div>
     </div>
 
     <div class="cta-wrap reveal" id="cta">
@@ -386,15 +408,46 @@
   <div class="modal-overlay" id="briefModal" role="dialog" aria-modal="true" aria-labelledby="briefTitle">
     <form class="modal-card">
       <button class="modal-close" id="closeBriefBtn" aria-label="Закрыть форму" type="button">×</button>
-      <h2 class="modal-title" id="briefTitle">Далее давайте обсудим вашу задачу</h2>
+      <h2 class="modal-title" id="briefTitle">Обсудить проект</h2>
       <input class="modal-field" type="text" name="name" placeholder="Ваше имя"/>
       <input class="modal-field" type="text" name="company" placeholder="Название компании"/>
-      <input class="modal-field" type="text" name="role" placeholder="Позиция в компании"/>
-      <input class="modal-field" type="text" name="team_size" placeholder="Размер команды"/>
-      <input class="modal-field" type="text" name="budget" placeholder="Бюджет"/>
-      <textarea class="modal-field" name="task" placeholder="Опишите вашу задачу"></textarea>
+
+      <div class="modal-select" data-select="role">
+        <button class="modal-select-btn" type="button">Позиция в компании</button>
+        <ul class="modal-select-options">
+          <li><button type="button" data-value="CEO / Founder">CEO / Founder</button></li>
+          <li><button type="button" data-value="CTO">CTO</button></li>
+          <li><button type="button" data-value="Product Manager">Product Manager</button></li>
+          <li><button type="button" data-value="Marketing Director">Marketing Director</button></li>
+          <li><button type="button" data-value="Другое">Другое</button></li>
+        </ul>
+        <input type="hidden" name="role"/>
+      </div>
+
+      <div class="modal-select" data-select="team_size">
+        <button class="modal-select-btn" type="button">Размер команды</button>
+        <ul class="modal-select-options">
+          <li><button type="button" data-value="1-10">1-10</button></li>
+          <li><button type="button" data-value="11-50">11-50</button></li>
+          <li><button type="button" data-value="51-200">51-200</button></li>
+          <li><button type="button" data-value="200+">200+</button></li>
+        </ul>
+        <input type="hidden" name="team_size"/>
+      </div>
+
+      <div class="modal-select" data-select="budget">
+        <button class="modal-select-btn" type="button">Бюджет</button>
+        <ul class="modal-select-options">
+          <li><button type="button" data-value="До 300 000 ₽">До 300 000 ₽</button></li>
+          <li><button type="button" data-value="300 000 - 1 000 000 ₽">300 000 - 1 000 000 ₽</button></li>
+          <li><button type="button" data-value="1 000 000 - 3 000 000 ₽">1 000 000 - 3 000 000 ₽</button></li>
+          <li><button type="button" data-value="Более 3 000 000 ₽">Более 3 000 000 ₽</button></li>
+        </ul>
+        <input type="hidden" name="budget"/>
+      </div>
+
       <input class="modal-field" type="text" name="contact" placeholder="Ваш контакт (@telegram_id / +7 (999) 123-45-67)"/>
-      <button class="modal-submit" type="submit">Отправить заявку</button>
+      <div class="modal-submit-wrap"><button class="modal-submit" type="submit">Отправить заявку</button></div>
     </form>
   </div>
 
@@ -459,6 +512,62 @@
       event.preventDefault();
       closeBriefModal();
     });
+
+    const techTrack = document.getElementById('techTrack');
+    if (techTrack) {
+      techTrack.innerHTML += techTrack.innerHTML;
+      const chips = [...techTrack.querySelectorAll('.tech-chip')];
+      function updateTechOpacity() {
+        const center = window.innerWidth / 2;
+        chips.forEach((chip) => {
+          const rect = chip.getBoundingClientRect();
+          const chipCenter = rect.left + rect.width / 2;
+          const dist = Math.abs(center - chipCenter);
+          const opacity = Math.max(0.2, 1 - dist / (window.innerWidth * 0.55));
+          chip.style.opacity = opacity.toFixed(2);
+        });
+      }
+      window.addEventListener('scroll', updateTechOpacity, { passive: true });
+      window.addEventListener('resize', updateTechOpacity);
+      setInterval(updateTechOpacity, 120);
+      updateTechOpacity();
+    }
+
+    const modalSelects = briefModal?.querySelectorAll('.modal-select') || [];
+    function closeAllSelects(except) {
+      modalSelects.forEach((select) => {
+        if (select !== except) select.classList.remove('open');
+      });
+    }
+
+    modalSelects.forEach((select) => {
+      const button = select.querySelector('.modal-select-btn');
+      const hiddenInput = select.querySelector('input[type="hidden"]');
+      button?.addEventListener('click', (event) => {
+        event.stopPropagation();
+        const willOpen = !select.classList.contains('open');
+        closeAllSelects(select);
+        select.classList.toggle('open', willOpen);
+      });
+      select.querySelectorAll('.modal-select-options button').forEach((option) => {
+        option.addEventListener('click', () => {
+          const value = option.getAttribute('data-value') || '';
+          if (hiddenInput) hiddenInput.value = value;
+          if (button) {
+            button.textContent = value;
+            button.classList.add('active');
+          }
+          select.classList.remove('open');
+        });
+      });
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!event.target.closest('.modal-select')) {
+        closeAllSelects();
+      }
+    });
+
 
     document.addEventListener('click', (event) => {
       if (!casesDropdown || !casesToggle) return;

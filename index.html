@@ -39,25 +39,24 @@
     .bg-orb--gold{width:22%;height:22%;right:-13%;top:-16%;background:radial-gradient(circle,rgba(255,215,0,.03) 0%,rgba(255,175,40,.01) 48%,transparent 70%);animation-duration:20s}
     .bg-orb--amber{width:20%;height:20%;left:-10%;bottom:-15%;background:radial-gradient(circle,rgba(255,170,0,.025) 0%,rgba(245,128,20,.01) 50%,transparent 70%);animation-duration:24s;animation-direction:reverse}
     .bg-orb--sun{width:12%;height:12%;right:12%;top:-5%;background:radial-gradient(circle,rgba(255,224,120,.015) 0%,transparent 68%);filter:blur(55px);animation-duration:15s}
-    .light-source{position:absolute;pointer-events:none;z-index:3;mix-blend-mode:screen}
+    .light-source{position:absolute;pointer-events:none;z-index:3;mix-blend-mode:screen;border-radius:50%;animation:orbFloat ease-in-out infinite alternate}
     .light-source--top-right{
-      right:-8%;
+      width:42%;
+      height:42%;
+      right:-18%;
       top:-18%;
-      width:min(58vw,960px);
-      height:min(58vw,960px);
-      background:
-        radial-gradient(circle at 22% 26%, rgba(255,194,64,.34) 0%, rgba(255,163,28,.16) 35%, rgba(255,120,0,.06) 58%, transparent 74%);
-      filter:blur(2px);
+      background:radial-gradient(circle, rgba(232,146,10,0.38) 0%, rgba(200,90,0,0.14) 50%, transparent 72%);
+      filter:blur(80px);
+      animation-duration:20s;
     }
     .light-source--hero-focus{
-      left:50%;
-      top:215px;
-      transform:translateX(-50%);
-      width:min(72vw,1050px);
-      height:min(34vw,500px);
-      background:
-        radial-gradient(ellipse at center, rgba(232,146,10,.3) 0%, rgba(232,146,10,.16) 42%, rgba(232,146,10,.06) 65%, transparent 80%);
-      filter:blur(18px);
+      width:44%;
+      height:44%;
+      left:-14%;
+      bottom:-18%;
+      background:radial-gradient(circle, rgba(30,80,200,0.28) 0%, rgba(10,40,140,0.10) 50%, transparent 72%);
+      filter:blur(100px);
+      animation-duration:26s;
     }
     @keyframes orbFloat{0%{transform:translate(0,0) scale(1)}100%{transform:translate(2%,-3%) scale(1.06)}}
     .page-grid{display:none}
@@ -180,8 +179,8 @@
       .grid-base,.grid-reveal{display:none}
       .bg-orb{animation:none;filter:blur(70px)}
       .bg-orb--gold,.bg-orb--amber,.bg-orb--sun{opacity:.25}
-      .light-source--top-right{right:-30%;top:-22%;width:95vw;height:95vw;opacity:.72}
-      .light-source--hero-focus{top:170px;width:110vw;height:62vw;filter:blur(24px);opacity:.78}
+      .light-source--top-right{right:-26%;top:-24%;width:76%;height:76%;opacity:.72}
+      .light-source--hero-focus{left:-24%;bottom:-24%;width:82%;height:82%;filter:blur(86px);opacity:.74}
       .hero-results{grid-template-columns:1fr}
       .header-nav{display:none}
       header .cases-menu{display:none}

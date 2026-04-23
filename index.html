@@ -140,7 +140,7 @@
     .modal-select-btn.active{color:var(--text)}
     .modal-select-btn::after{content:"⌄";font-size:24px;color:rgba(255,255,255,.55);margin-left:12px;transform:translateY(-2px)}
     .modal-select.open .modal-select-btn::after{transform:rotate(180deg) translateY(2px)}
-    .modal-select-options{display:none;list-style:none;margin:8px 0 10px;padding:14px 16px;border:1px solid rgba(255,255,255,.16);background:#1a1a1a}
+    .modal-select-options{display:none; position:absolute;top:100%;width:100%;z-index:10;list-style:none;margin:8px 0 10px;padding:14px 16px;border:1px solid rgba(255,255,255,.16);background:#1a1a1a}
     .modal-select.open .modal-select-options{display:block}
     .modal-select-options button{width:100%;background:none;border:none;text-align:left;color:#fff;font-size:18px;font-family:"Montserrat",sans-serif;padding:10px 0;cursor:pointer}
     .modal-select-options button:hover{color:var(--accent)}

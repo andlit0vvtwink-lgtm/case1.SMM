@@ -39,6 +39,26 @@
     .bg-orb--gold{width:22%;height:22%;right:-13%;top:-16%;background:radial-gradient(circle,rgba(255,215,0,.03) 0%,rgba(255,175,40,.01) 48%,transparent 70%);animation-duration:20s}
     .bg-orb--amber{width:20%;height:20%;left:-10%;bottom:-15%;background:radial-gradient(circle,rgba(255,170,0,.025) 0%,rgba(245,128,20,.01) 50%,transparent 70%);animation-duration:24s;animation-direction:reverse}
     .bg-orb--sun{width:12%;height:12%;right:12%;top:-5%;background:radial-gradient(circle,rgba(255,224,120,.015) 0%,transparent 68%);filter:blur(55px);animation-duration:15s}
+    .light-source{position:absolute;pointer-events:none;z-index:3;mix-blend-mode:screen}
+    .light-source--top-right{
+      right:-8%;
+      top:-18%;
+      width:min(58vw,960px);
+      height:min(58vw,960px);
+      background:
+        radial-gradient(circle at 22% 26%, rgba(255,194,64,.34) 0%, rgba(255,163,28,.16) 35%, rgba(255,120,0,.06) 58%, transparent 74%);
+      filter:blur(2px);
+    }
+    .light-source--hero-focus{
+      left:50%;
+      top:215px;
+      transform:translateX(-50%);
+      width:min(72vw,1050px);
+      height:min(34vw,500px);
+      background:
+        radial-gradient(ellipse at center, rgba(232,146,10,.3) 0%, rgba(232,146,10,.16) 42%, rgba(232,146,10,.06) 65%, transparent 80%);
+      filter:blur(18px);
+    }
     @keyframes orbFloat{0%{transform:translate(0,0) scale(1)}100%{transform:translate(2%,-3%) scale(1.06)}}
     .page-grid{display:none}
  
@@ -70,6 +90,8 @@
     .hero-top-actions{margin-bottom:20px;display:flex;justify-content:flex-start}
     .case-title{font-size:clamp(36px,5.2vw,72px);font-weight:800;letter-spacing:-.04em;line-height:1.05;margin-bottom:26px}
     .case-title .hi{color:var(--accent)}
+    .accent-yellow{color:var(--accent);font-weight:700}
+    .accent-white{color:#fff;font-weight:700}
     .case-lead{font-size:clamp(18px,1.8vw,22px);color:var(--text);line-height:1.9;max-width:780px;padding-left:20px;border-left:2px solid var(--accent-soft)}
 
     .hero-results{margin-top:22px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
@@ -158,6 +180,8 @@
       .grid-base,.grid-reveal{display:none}
       .bg-orb{animation:none;filter:blur(70px)}
       .bg-orb--gold,.bg-orb--amber,.bg-orb--sun{opacity:.25}
+      .light-source--top-right{right:-30%;top:-22%;width:95vw;height:95vw;opacity:.72}
+      .light-source--hero-focus{top:170px;width:110vw;height:62vw;filter:blur(24px);opacity:.78}
       .hero-results{grid-template-columns:1fr}
       .header-nav{display:none}
       header .cases-menu{display:none}
@@ -193,6 +217,8 @@
 </head>
 <body>
   <div class="page-bg" id="pageBg" aria-hidden="true">
+    <div class="light-source light-source--top-right"></div>
+    <div class="light-source light-source--hero-focus"></div>
     <div class="bg-orbs">
       <div class="bg-orb bg-orb--gold"></div>
       <div class="bg-orb bg-orb--amber"></div>
@@ -267,22 +293,22 @@
       </div>
     </div>
     <h1 class="case-title reveal">Мультиагентная система <br> для <span class="hi">SMM</span></h1>
-    <p class="case-lead reveal">К нам обратилось маркетинговое агентство (NDA), управляющее 23 Telegram-каналами разных тематик. Подготовка одного поста занимала около часа, ограничивала масштабирование и снижала качество контента при росте нагрузки на команду.</p>
+    <p class="case-lead reveal">К нам обратилось маркетинговое агентство (NDA), управляющее <span class="accent-yellow">23 Telegram-каналами</span> разных тематик. Подготовка одного поста занимала <span class="accent-white">около часа</span>, ограничивала масштабирование и снижала качество контента при росте нагрузки на команду.</p>
   </div>
 
   <div class="section-divider"></div>
 
   <article class="case-body warm-section">
     <div class="section-heading reveal" id="problem"><h2>Проблема</h2></div>
-    <p class="reveal">SMM-специалист вручную проходил все этапы: придумывал тему, писал текст, искал изображения и оформлял публикацию. На один пост стабильно уходило около 50 минут.</p>
-    <p class="reveal">Также отсутствовала стандартизация: стиль и структура постов зависели от конкретного SMM-менеджера - кто-то делал лучше, а кто-то хуже <br><span class="problem-accent">Вывод:</span> корневая проблема в архитектуре процесса — один специалист закрывал четыре принципиально разные задачи одновременно, что снижало качество каждого этапа по отдельности и делало масштабирование невозможным без найма.</p>
+    <p class="reveal">SMM-специалист вручную проходил все этапы: придумывал тему, писал текст, искал изображения и оформлял публикацию. На один пост стабильно уходило <span class="accent-white">около 50 минут</span>.</p>
+    <p class="reveal">Также отсутствовала стандартизация: стиль и структура постов зависели от конкретного SMM-менеджера - кто-то делал лучше, а кто-то хуже. <br><span class="problem-accent">Вывод:</span> корневая проблема в архитектуре процесса — <span class="accent-white">один специалист закрывал четыре принципиально разные задачи одновременно</span>, что снижало качество каждого этапа по отдельности и делало масштабирование невозможным без найма.</p>
 
     <div class="block-sep"></div>
 
     <div class="section-heading reveal" id="solution"><h2>Решение</h2></div>
-     <p class="reveal">Цель заключалась в том, чтобы <strong>автоматизировать полный цикл создания контента</strong> и обеспечить единый стандарт качества <strong>без расширения штата.</strong></p>
-    <p class="reveal">Для этого мы разработали веб-приложение на базе Google Gemini с мультиагентной архитектурой, <strong>автоматизирующее полный цикл создания контента</strong> - от идеи до готового поста, с одновременной <strong>стандартизацией</strong> и <strong>повышением качества</strong> за счёт эталонного Tone of Voice.</p>
-    <p class="reveal">Система построена как конвейер из специализированных AI-агентов, где каждый из них отвечает за отдельный этап и передаёт результат следующему.</p>
+     <p class="reveal">Цель заключалась в том, чтобы <span class="accent-white">автоматизировать полный цикл создания контента</span> и обеспечить единый стандарт качества <span class="accent-yellow">без расширения штата</span>.</p>
+    <p class="reveal">Для этого мы разработали веб-приложение на базе <span class="accent-yellow">Google Gemini</span> с мультиагентной архитектурой, автоматизирующее полный цикл создания контента — от идеи до готового поста, с одновременной <span class="accent-white">стандартизацией</span> и <span class="accent-white">повышением качества</span> за счёт эталонного Tone of Voice.</p>
+    <p class="reveal">Система построена как <span class="accent-white">конвейер из специализированных AI-агентов</span>, где каждый из них отвечает за отдельный этап и передаёт результат следующему.</p>
 
     <div class="architecture-system reveal" aria-label="Диаграмма мультиагентной архитектуры">
       <div class="architecture-agents">
@@ -292,13 +318,13 @@
         <article class="agent-node agent-node--br"><h4>Агент-редактор</h4><p>Проверяет грамотность, выравнивает стиль и контролирует tone of voice перед финальной выдачей в публикацию.</p></article>
       </div>
     </div>
-    <p class="reveal visible">Это устраняет перегрузку одного специалиста и формирует предсказуемое качество результата</p>
+    <p class="reveal visible">Это устраняет перегрузку одного специалиста и формирует <span class="accent-yellow">предсказуемое качество результата</span>.</p>
 
     <div class="block-sep"></div>
     
     
     <div class="section-heading reveal" id="example"><h2>Как работает система</h2></div>
-    <p class="reveal">Менеджер открывает систему и вводит параметры: аудитория — начинающие предприниматели, цель — заинтересовать в покупке его Telegram-бота , тезисы — ["вы теряете до 40% прибыли на логистике", "автоматизация через Telegram упрощает управление заказами", ...] </p>
+    <p class="reveal">Менеджер открывает систему и вводит параметры: аудитория — начинающие предприниматели, цель — заинтересовать в покупке его Telegram-бота, тезисы — ["вы теряете <span class="accent-yellow">до 40% прибыли</span> на логистике", "автоматизация через Telegram упрощает управление заказами", ...].</p>
 
     <div class="roadmap-vertical reveal" aria-label="Roadmap создания поста">
       <article class="roadmap-item left">

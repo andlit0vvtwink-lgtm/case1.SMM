@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AI-ассистент генерации ТЗ · Aivion</title>
-  <meta name="description" content="Кейс о том, как AI-ассистент генерации ТЗ ускорил подготовку дизайн-спецификаций для FinTech и SaaS: стандартизировал документацию и сократил рутину команды"/>
+  <title>Корпоративная PBMS-система · Aivion</title>
+  <meta name="description" content="Кейс о разработке корпоративной PBMS-системы на Flask: единое управление проектами, автоматические бэкапы с SHA-256 и прозрачный контроль доступа"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
@@ -107,6 +107,10 @@
     .block-sep{border-top:1px solid var(--section-line);margin:56px 0}
 
     .problem-accent{color:var(--accent);font-weight:700}
+    .problem-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:14px}
+    .problem-card{border:1px solid rgba(255,255,255,.17);background:rgba(44,44,44,.45);border-radius:14px;padding:16px}
+    .problem-card h3{font-size:18px;margin-bottom:8px;color:var(--accent)}
+    .problem-card p{margin:0;color:var(--text);font-size:14px;line-height:1.7}
 
     .solution-flow{display:grid;gap:14px;margin-top:22px}
     .flow-step{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:flex-start;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.12)}
@@ -218,7 +222,7 @@
       .architecture-system{min-height:auto}
       .architecture-road{display:none}
       .architecture-agents{grid-template-columns:1fr}
-      .mode-grid,.solution-pillars{grid-template-columns:1fr}
+      .mode-grid,.solution-pillars,.problem-grid{grid-template-columns:1fr}
       .agent-node{width:100%}
     }
     @media (max-width:640px){
@@ -276,7 +280,7 @@
       <nav class="header-nav" aria-label="Навигация по кейсу">
         <a class="nav-link" href="#problem">Проблема</a>
         <a class="nav-link" href="#solution">Решение</a>
-        <a class="nav-link" href="#example">Пример</a>
+        <a class="nav-link" href="#example">Процесс</a>
         <a class="nav-link" href="#stack">Стек</a>
       </nav>
 
@@ -285,7 +289,7 @@
       <nav class="mobile-nav" id="mobileNav" aria-label="Мобильная навигация">
         <a class="nav-link" href="#problem">Проблема</a>
         <a class="nav-link" href="#solution">Решение</a>
-        <a class="nav-link" href="#example">Пример</a>
+        <a class="nav-link" href="#example">Процесс</a>
         <a class="nav-link" href="#stack">Стек</a>
         <div class="mobile-cases" aria-label="Список кейсов">
           <span class="mobile-cases-title">Все кейсы</span>
@@ -312,42 +316,52 @@
         </div>
       </div>
     </div>
-    <h1 class="case-title reveal">AI-ассистент <br> генерации <span class="hi">ТЗ</span></h1>
-    <p class="case-lead reveal">К нам обратилась студия продуктового дизайна (NDA), которая делает сложные интерфейсы для FinTech и SaaS. Команда регулярно получала запросы в стиле «сделайте как Apple, но для трейдинга», и перевод таких формулировок в точные спецификации занимал <span class="accent-white">слишком много ручной работы</span> и времени</p>
+    <h1 class="case-title reveal">Корпоративная <br> система <span class="hi">PBMS</span></h1>
+    <p class="case-lead reveal">IT-департамент цифровой компании (NDA) столкнулся с хаосом в проектном контуре и рисками потери файлов. Мы разработали кастомную PBMS-платформу на Flask, которая объединила управление проектами, журнал действий и автоматическое резервное копирование с проверкой целостности.</p>
   </div>
 
   <div class="section-divider"></div>
 
   <article class="case-body warm-section">
     <div class="section-heading reveal" id="problem"><h2>Проблема</h2></div>
-    <p class="reveal">После брифа менеджеры и дизайнеры вручную декомпозировали запрос клиента, затем собирали ТЗ в свободной форме. До 30% времени предпроектной фазы уходило на рутину: формулировки, уточнения, синхронизации и правки.</p>
-    <p class="reveal">Качество документации зависело от конкретного исполнителя: каждый писал по-своему, а описания анимаций и визуальных эффектов оставались субъективными. На стыке дизайна и разработки это вызывало разночтения и дополнительные итерации.</p>
-    <p class="reveal"><span class="problem-accent">Вывод:</span> студии нужен был инструмент, который превращает абстрактный клиентский запрос в стандартизированное, технически точное ТЗ за минуты, а не за два рабочих дня.</p>
+    <p class="reveal">Клиенту требовалась единая внутренняя система, где сотрудники смогут прозрачно вести проекты, контролировать дедлайны и безопасно хранить рабочие артефакты без ручных операций.</p>
+    <div class="problem-grid reveal" aria-label="Ключевые проблемы клиента">
+      <article class="problem-card">
+        <h3>Разрозненное управление проектами</h3>
+        <p>Проекты велись в отдельных таблицах и чатах, Milestones обновлялись несинхронно, а статус задач был непрозрачным для руководителей и исполнителей.</p>
+      </article>
+      <article class="problem-card">
+        <h3>Ненадежное резервное копирование</h3>
+        <p>Бэкапы выполнялись вручную и нерегулярно, поэтому рос риск потери данных и отсутствовала верификация целостности архивов при хранении и восстановлении.</p>
+      </article>
+    </div>
+    <p class="reveal"><span class="problem-accent">Вывод:</span> нужна была одна PBMS-платформа с управлением проектами, автоматическими бэкапами и ролевой безопасностью в закрытом корпоративном контуре.</p>
 
     <div class="block-sep"></div>
 
     <div class="section-heading reveal" id="solution"><h2>Решение</h2></div>
     <div class="solution-intro reveal">
-      <p>Мы разработали веб-приложение на Flask с многоагентной архитектурой на базе Google Gemini (gemma-3-27b-it), которое автоматически формирует структурированные дизайн-спецификации в JSON.</p>
-      <p>Вместо длинной ручной подготовки команда получила предсказуемый конвейер: от декомпозиции запроса до аудита готового ТЗ и итеративной доработки без потери контекста.</p>
+      <p>Мы разработали монолитное веб-приложение PBMS (Project &amp; Backup Management System) на Flask: оно объединяет трекинг задач, безопасные бэкапы и централизованное управление доступами.</p>
+      <p>Система закрыла операционные риски за счет автоматизации ночных архивов, контроля целостности SHA-256 и прозрачного аудита действий сотрудников.</p>
     </div>
 
     <article class="solution-main-card reveal">
-      <h3>Решение объединяет логику, контроль качества и масштабирование</h3>
-      <p>Мы собрали бизнес-логику, ключевые особенности и дополнительные компоненты в три продуктовые карточки, чтобы команда работала по единому стандарту в каждом проекте.</p>
+      <h3>Решение объединяет управление проектами, защиту данных и контроль доступа</h3>
+      <p>Архитектуру PBMS собрали в четыре практических блока, чтобы система закрывала и операционные, и инфраструктурные задачи в одном интерфейсе.</p>
       <div class="solution-pillars">
-        <article class="pillar-card"><h4>Декомпозиция клиентского запроса</h4><p>Система превращает абстрактные формулировки в конкретные сущности, цели и UX-паттерны. Это убирает размытость на старте и сокращает число уточняющих циклов с заказчиком.</p></article>
-        <article class="pillar-card"><h4>Генерация стандартизированного JSON-ТЗ</h4><p>Выходной документ содержит точные параметры интерфейса, включая анимации (stiffness, damping), структуру дизайн-системы и технические ограничения. Результат сразу совместим с рабочими инструментами команды.</p></article>
-        <article class="pillar-card"><h4>Самовалидация и итеративный аудит</h4><p>Встроенный аудитор проверяет полноту спецификации, корректность JSON и соответствие требованиям. При несоответствиях запускается автоматическая доработка без ручного перезапуска процесса.</p></article>
+        <article class="pillar-card"><h4>Гибкое управление проектами</h4><p>Трекинг прогресса (0–100%) строится на Milestones, приоритеты подсвечиваются визуально, а просроченные дедлайны автоматически выделяются для быстрого реагирования.</p></article>
+        <article class="pillar-card"><h4>Автоматические бэкапы по расписанию</h4><p>APScheduler запускает ночные резервные копии активных проектов по Cron-сценарию, а также поддерживает ручные снапшоты перед критичными изменениями.</p></article>
+        <article class="pillar-card"><h4>Целостность архивов и восстановление</h4><p>Каждый ZIP-архив сопровождается metadata.json и SHA-256 checksum, что позволяет быстро проверить корректность хранения и исключить повреждения данных.</p></article>
+        <article class="pillar-card"><h4>RBAC и аудит действий</h4><p>Ролевая модель ограничивает доступ по зонам ответственности, а Audit Log фиксирует входы, скачивания и административные операции с IP и User-Agent.</p></article>
       </div>
     </article>
 
     <section class="architecture-system reveal" aria-label="Агентная архитектура решения">
       <div class="architecture-agents">
-        <article class="agent-node agent-node--tl"><h4>Principal Product Analyst</h4><p>Разбирает исходный запрос клиента, формирует структуру требований, сценарии использования и UX-приоритеты для следующего слоя.</p></article>
-        <article class="agent-node agent-node--tr"><h4>Principal Product Designer</h4><p>Преобразует аналитическую структуру в детализированное JSON-ТЗ: компоненты интерфейса, состояния, анимации и правила визуальной системы.</p></article>
-        <article class="agent-node agent-node--bl"><h4>Design Auditor</h4><p>Проверяет спецификацию на полноту и качество, даёт обратную связь и инициирует повторные итерации до прохождения требований.</p></article>
-        <article class="agent-node agent-node--br"><h4>Template &amp; Style Curator</h4><p>Подключает библиотеку проверенных стилевых шаблонов (Data-First Futurism, Glassmorphism Elegance, Apple Minimalist) для быстрого создания альтернативных концепций.</p></article>
+        <article class="agent-node agent-node--tl"><h4>Project Hub</h4><p>Централизует проекты, этапы и задачи: от старта до архивирования, включая приоритеты, дедлайны и связанный контекст команды.</p></article>
+        <article class="agent-node agent-node--tr"><h4>Backup Engine</h4><p>Формирует nightly-бэкапы и ручные snapshot-архивы, управляет расписанием и обеспечивает единый поток резервирования для всех активных проектов.</p></article>
+        <article class="agent-node agent-node--bl"><h4>Integrity Guard</h4><p>Вычисляет SHA-256, создаёт metadata.json и валидирует архивы до скачивания/восстановления, чтобы минимизировать риск битых копий.</p></article>
+        <article class="agent-node agent-node--br"><h4>Access &amp; Audit Layer</h4><p>Контролирует RBAC-права (Admin/SEO/Employee) и ведёт журнал действий для расследования инцидентов и проверки соблюдения регламентов.</p></article>
       </div>
     </section>
 
@@ -357,42 +371,42 @@
     <section class="how-system-layout" aria-label="Как работает система">
       <div class="roadmap-copy">
         <div class="section-heading reveal" id="example"><h2>Как работает система</h2></div>
-        <p class="reveal visible">После получения брифа система проходит несколько этапов: анализ запроса, проектирование структуры спецификации, генерация JSON и автоматический аудит. Благодаря этому документация формируется в едином стандарте независимо от исполнителя.</p>
+        <p class="reveal visible">После внедрения PBMS команда работает в едином цикле: постановка и отслеживание задач, автоматический ночной бэкап, проверка целостности и контроль действий пользователей через Audit Log.</p>
       </div>
 
-      <div class="roadmap-vertical reveal" aria-label="Roadmap генерации дизайн-спецификации">
+      <div class="roadmap-vertical reveal" aria-label="Roadmap работы PBMS">
         <article class="roadmap-item left">
           <div class="roadmap-content">
-            <h4>Сбор и декомпозиция входных данных</h4>
-            <p>Система выделяет из запроса цели продукта, ограничения, целевые сценарии и ожидания по стилю интерфейса.</p>
+            <h4>Постановка и декомпозиция задач</h4>
+            <p>Проект создаётся в едином реестре: фиксируются сроки, Milestones, приоритеты и ответственные, чтобы исключить разрывы в коммуникации.</p>
           </div>
           <span class="roadmap-marker"></span>
         </article>
         <article class="roadmap-item right">
           <span class="roadmap-marker"></span>
           <div class="roadmap-content">
-            <h4>Генерация базовой структуры ТЗ</h4>
-            <p>Агент-аналитик передаёт структурированный контекст дизайнерскому агенту, который формирует каркас спецификации для интерфейса.</p>
+            <h4>Плановые ночные бэкапы</h4>
+            <p>BackgroundScheduler по Cron запускает резервирование активных проектов (по умолчанию в 03:00), не требуя ручного вмешательства администраторов.</p>
           </div>
         </article>
         <article class="roadmap-item left">
           <div class="roadmap-content">
-            <h4>Детализация UI и анимаций</h4>
-            <p>Спецификация дополняется компонентами дизайн-системы, состояниями и параметрами motion-дизайна с точными техническими значениями.</p>
+            <h4>Проверка целостности архивов</h4>
+            <p>Для каждого архива формируются metadata.json и SHA-256 checksum, чтобы контролировать корректность хранения и передачи копий.</p>
           </div>
           <span class="roadmap-marker"></span>
         </article>
         <article class="roadmap-item right">
           <span class="roadmap-marker"></span>
           <div class="roadmap-content">
-            <h4>Автоматическая проверка и правки</h4>
-            <p>Design Auditor оценивает полноту, валидность JSON и соответствие требованиям; при необходимости запускает повторные итерации.</p>
+            <h4>Ролевой доступ и аудит событий</h4>
+            <p>RBAC ограничивает операции по ролям, а журнал аудита фиксирует критичные действия пользователей с техническими метаданными.</p>
           </div>
         </article>
         <article class="roadmap-item left">
           <div class="roadmap-content">
-            <h4>Экспорт и интеграция в процесс</h4>
-            <p>Готовый JSON передаётся в рабочие инструменты команды, а также используется для быстрого сравнения альтернативных концепций в разных стилях.</p>
+            <h4>Быстрое восстановление и контроль</h4>
+            <p>Команда может восстановить проект из последней валидной копии и быстро провести внутреннюю проверку по истории действий и статусам.</p>
           </div>
           <span class="roadmap-marker"></span>
         </article>
@@ -404,16 +418,16 @@
     <div class="section-heading reveal" id="results"><h2>Результаты</h2></div>
     <div class="hero-results reveal" aria-label="Ключевые результаты">
       <div class="metric-card">
-        <div class="metric-value">2 дня → 2 часа</div>
-        <div class="metric-note">Подготовка технического задания сократилась с ~2 рабочих дней до ~2 часов</div>
+        <div class="metric-value">0 потерь данных</div>
+        <div class="metric-note">После запуска nightly-бэкапов исключены инциденты утраты проектных файлов в рабочем контуре</div>
       </div>
       <div class="metric-card">
-        <div class="metric-value">30% → 10%</div>
-        <div class="metric-note">Доля времени на рутинные задачи снизилась с 30% проекта до 10%</div>
+        <div class="metric-value">+ прозрачность</div>
+        <div class="metric-note">Руководители получили сквозную видимость статусов, приоритетов и действий сотрудников в одной панели</div>
       </div>
       <div class="metric-card">
-        <div class="metric-value">Стандарт ТЗ</div>
-        <div class="metric-note">Качество документации перестало зависеть от конкретного менеджера или дизайнера</div>
+        <div class="metric-value">Быстрее поиск</div>
+        <div class="metric-note">Тегированные заметки и единый контур проекта сократили время на поиск документации и связанных артефактов</div>
       </div>
     </div>
 
@@ -424,19 +438,19 @@
       <div class="tech-track" id="techTrack">
         <span class="tech-chip">Python</span>
         <span class="tech-chip">Flask</span>
-        <span class="tech-chip">Google Generative AI SDK</span>
-        <span class="tech-chip">Gemini (gemma-3-27b-it)</span>
-        <span class="tech-chip">Multi-Agent Orchestration</span>
-        <span class="tech-chip">JSON Schema Validation</span>
-        <span class="tech-chip">Retry &amp; Feedback Loop</span>
-        <span class="tech-chip">Prompt Template Library</span>
+        <span class="tech-chip">SQLAlchemy (ORM)</span>
+        <span class="tech-chip">APScheduler</span>
+        <span class="tech-chip">RBAC</span>
+        <span class="tech-chip">SHA-256 Integrity Check</span>
+        <span class="tech-chip">Quill.js</span>
+        <span class="tech-chip">SQLite / PostgreSQL-ready</span>
       </div>
     </div>
 
     <div class="cta-wrap reveal" id="cta">
-      <h3>Обсудим ваш документооборот и подготовку ТЗ</h3>
-      <p>Покажем, как автоматизировать подготовку спецификаций, стандартизировать качество документов и ускорить запуск новых проектов без расширения штата.</p>
-      <a href="#" class="cta-btn" id="openBriefBtn">Запросить аудит документации</a>
+      <h3>Обсудим внедрение корпоративной PBMS-системы</h3>
+      <p>Покажем, как объединить управление проектами, защиту данных и аудит действий в одном безопасном интерфейсе под задачи вашей команды.</p>
+      <a href="#" class="cta-btn" id="openBriefBtn">Запросить архитектуру PBMS</a>
     </div>
   </article>
 
